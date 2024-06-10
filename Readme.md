@@ -1,4 +1,6 @@
-# Text Summarization Web App
+# Text Summarization App
+
+![Text Summarization] (images/screenshot1.jpg)
 
 This is a web application for text summarization built using Flask and NLTK. The application allows users to input a piece of text, specify the desired length of the summary, and then generates a summarized version of the text using the NLTK library.
 
@@ -22,3 +24,21 @@ This is a web application for text summarization built using Flask and NLTK. The
 
 ```bash
 git clone https://github.com/your_username/your_project.git
+```
+2. Install the required dependencies:
+```
+pip install -r requirements.txt
+```
+3. Open your web browser and navigate to http://localhost:5000 to access the application.
+
+## Deployment
+The project is deployed on  https://santapan345.pythonanywhere.com
+
+![Text Summarization] (images/screenshot2.jpg)
+
+## Contributing
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
