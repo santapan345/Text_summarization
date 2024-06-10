@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarization</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100">
+    <header style="background-color: #5F939A; height:80px;" class="fixed inset-0 w-full flex items-center justify-center shadow-lg z-10">
+        <div class="text-white font-bold text-2xl">Text Summarization</div>
+    </header>
+
+    <section class="pt-28 pb-10 px-4 md:px-20 lg:px-40 flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
+        <div class="w-full md:w-1/2 bg-white p-6 rounded-lg shadow-lg">
+            <form class="flex flex-col space-y-4" action="{{ url_for('summarize') }}" method="post">
+                <textarea class="w-full h-64 p-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" name="data" id="data" placeholder="Enter the content you want to summarize" required>{{ data }}</textarea>
+
+                <div class="flex items-center space-x-4">
+                    <h3 class="text-lg font-medium">Summary Length</h3>
+                    <input type="range" class="flex-grow" min="1" max="10" name="maxL" value="5">
+                </div>
+
+                <div class="flex justify-between">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-lg" type="submit">Summarize</button>
+                    <button class="bg-gray-500 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-lg shadow-lg" type="reset" onclick="clearContent()">Clear</button>
+                </div>
+            </form>
+        </div>
+        <div class="w-full md:w-1/2 bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <textarea class="w-full h-64 p-4 border rounded-lg bg-gray-100" name="result" readonly placeholder="Your Summary">{{ result }}</textarea>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg shadow-lg self-center" onclick="copyText()">Copy text</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function copyText() {
+            const summaryText = document.querySelector('textarea[name="result"]');
+            summaryText.select();
+            document.execCommand('copy');
+        }
+
+        function clearContent() {
+            document.getElementById('data').value = '';
+            document.querySelector('textarea[name="result"]').value = '';
+            window.location.href = "/";
+        }
+    </script>
+</body>
+
+</html>

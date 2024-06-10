@@ -1,0 +1,6 @@
+flask
+networkx
+nltk
+numpy
+scipy
+gunicorn
